@@ -285,8 +285,8 @@ class Program
 
     static void Main(string[] args)
     {
-        //GenerarDatos();
-        //BorrarMatriculaciones();
+        GenerarDatos();
+        BorrarMatriculaciones();
         RealizarQuery();
     }
 
