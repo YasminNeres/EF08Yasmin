@@ -135,14 +135,21 @@ class Program
   static void BorrarMatriculaciones()
 
     { 
-         using (var db = new InstitutoContext())
+        using (var db = new InstitutoContext())
         {
-           var matricula = db.Matriculas.OrderBy(ma => ma.MatriculaId);
-        
-               db.Remove(matricula);
-               db.SaveChanges();
+           var matriculas = db.Matriculas;
+            foreach(var element in matriculas){ 
+                if (element.AlumnoId % 3 == 0 && element.AlumnoId % 2 == 0) {
+                    Console.WriteLine(element.AlumnoId);
+                    db.Matriculas.Remove(element);
+                } 
+                if (element.AlumnoId % 2 == 0 && element.AlumnoId % 5 == 0) {
+                    Console.WriteLine(element.AlumnoId);
+                    db.Matriculas.Remove(element);
+                } 
 
-        }
+            }
+            db.SaveChanges();
     }
     static void RealizarQuery()
     {
